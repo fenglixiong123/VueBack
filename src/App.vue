@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <div class="header">
-      <el-row>
-        <el-col :span="24">
+
+    <el-container>
+      <!--头部-->
+      <el-header>
+        <div class="flx-header">
           <el-menu default-active="5" class="el-menu-demo"
                    mode="horizontal"
                    @select="handleSelect"
@@ -20,64 +22,70 @@
             <el-menu-item index="4">系统设置</el-menu-item>
             <el-menu-item index="5">活动发布</el-menu-item>
           </el-menu>
-        </el-col>
-      </el-row>
-    </div>
-    <div style="position: relative;height: 60px;width: 100%;"></div>
-    <el-row :gutter="20">
-      <el-col :span="5">
-        <!--左侧导航-->
-        <div class="main-left">
-        <el-menu default-active="/activePublic"
-                 class="el-menu-vertical-demo"
-                 @open="handleOpen"
-                 @close="handleClose"
-                 background-color="#545c64"
-                 text-color="#fff"
-                 active-text-color="#ffd04b"
-                 :default-openeds="opens"
-                 :router="true">
-          <el-menu-item index="/activeHome">首页</el-menu-item>
-          <el-menu-item index="/activePublic">活动发布</el-menu-item>
-          <el-menu-item index="/activeManage">活动管理</el-menu-item>
-          <el-menu-item index="/activeStatistic">活动统计</el-menu-item>
-          <el-submenu index="/selfManage">
-            <template slot="title">个人中心</template>
-            <el-menu-item index="/selfSpace">
-              <i class="el-icon-setting"></i>
-              <span>个人空间</span>
-            </el-menu-item>
-            <el-submenu index="/selfProfile">
-              <template slot="title">
-                <i class="el-icon-menu"></i>
-                <span>个人资料</span>
-              </template>
-              <el-menu-item index="/selfInfo">
-                <i class="el-icon-location"></i>
-                <span>个人信息</span>
-              </el-menu-item>
-              <el-menu-item index="/selfResume">
-                <i class="el-icon-location"></i>
-                <span>个人简历</span>
-              </el-menu-item>
-            </el-submenu>
-            <el-menu-item index="/modifyPassword">
-              <i class="el-icon-location"></i>
-              <span>修改密码</span>
-            </el-menu-item>
-          </el-submenu>
-          <el-menu-item index="/docGuide">文档指南</el-menu-item>
-          <el-menu-item index="/systemSet">系统设置</el-menu-item>
-        </el-menu>
-      </div>
-      </el-col>
-      <el-col :span="19">
-        <!--右侧导航-->
-        <div class="main-right">
-          <router-view/>
         </div>
-      </el-col>
-    </el-row>
+      </el-header>
+      <br/>
+      <!--中间-->
+      <el-container>
+        <el-aside width="240px">
+          <div class="flx-main-left">
+            <el-menu default-active="/activePublic"
+                     class="el-menu-vertical-demo"
+                     @open="handleOpen"
+                     @close="handleClose"
+                     background-color="#545c64"
+                     text-color="#fff"
+                     active-text-color="#ffd04b"
+                     :default-openeds="opens"
+                     :router="true">
+              <el-menu-item index="/activeHome">首页</el-menu-item>
+              <el-menu-item index="/activePublic">活动发布</el-menu-item>
+              <el-menu-item index="/activeManage">活动管理</el-menu-item>
+              <el-menu-item index="/activeStatistic">活动统计</el-menu-item>
+              <el-submenu index="/selfManage">
+                <template slot="title">个人中心</template>
+                <el-menu-item index="/selfSpace">
+                  <i class="el-icon-setting"></i>
+                  <span>个人空间</span>
+                </el-menu-item>
+                <el-submenu index="/selfProfile">
+                  <template slot="title">
+                    <i class="el-icon-menu"></i>
+                    <span>个人资料</span>
+                  </template>
+                  <el-menu-item index="/selfInfo">
+                    <i class="el-icon-location"></i>
+                    <span>个人信息</span>
+                  </el-menu-item>
+                  <el-menu-item index="/selfResume">
+                    <i class="el-icon-location"></i>
+                    <span>个人简历</span>
+                  </el-menu-item>
+                </el-submenu>
+                <el-menu-item index="/modifyPassword">
+                  <i class="el-icon-location"></i>
+                  <span>修改密码</span>
+                </el-menu-item>
+              </el-submenu>
+              <el-menu-item index="/activeGuide">文档指南</el-menu-item>
+              <el-menu-item index="/systemSet">系统设置</el-menu-item>
+            </el-menu>
+          </div>
+        </el-aside>
+        <el-main>
+          <div class="flx-main-right">
+            <router-view/>
+          </div>
+        </el-main>
+      </el-container>
+      <!--尾部-->
+      <el-footer>
+        <div class="flx-footer">
+          版权所有@2015-2019 all right reserved
+        </div>
+      </el-footer>
+    </el-container>
+
   </div>
 </template>
 
@@ -108,21 +116,30 @@ export default {
 
 <style scoped>
   body{margin: 0;}
-  #app {
-    min-width: 1200px;
-    margin: 0 auto;
-    font-family: "Helvetica Neue","PingFang SC",Arial,sans-serif;
-  }
-  .header .el-menu-demo{
+
+  .flx-header .el-menu-demo{
+    width: 100%;
     padding-left: 300px;
   }
   a{
     text-decoration: none;
   }
-  .main-right{
+  .flx-main-left{
+    margin-left: 20px;
+  }
+  .flx-main-right{
     width: 90%;
     height: 500px;
     padding: 20px;
     border: 1px solid grey;
+  }
+  .flx-footer{
+    text-align: center;
+    line-height: 60px;
+    margin-top: 20px;
+    width:100%;
+    height: 60px;
+    background-color: #545c64;
+    /*border:1px solid blue;*/
   }
 </style>
