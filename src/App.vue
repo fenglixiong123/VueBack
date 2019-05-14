@@ -11,16 +11,16 @@
                    background-color="#545c64"
                    text-color="#fff"
                    active-text-color="#ffd04b">
-            <el-menu-item index="1">高级插件</el-menu-item>
-            <el-menu-item index="2"><a href="https://www.baidu.com" target="_blank">在线商城</a></el-menu-item>
+            <el-menu-item index="1">我们的时光</el-menu-item>
+            <el-menu-item index="2"><a href="https://www.baidu.com" target="_blank">以及回忆</a></el-menu-item>
             <el-submenu index="3">
-              <template slot="title">客户管理</template>
+              <template slot="title">每一天</template>
               <el-menu-item index="3-1">华为</el-menu-item>
               <el-menu-item index="3-2">抖音</el-menu-item>
               <el-menu-item index="3-3">小米</el-menu-item>
             </el-submenu>
-            <el-menu-item index="4">系统设置</el-menu-item>
-            <el-menu-item index="5">活动发布</el-menu-item>
+            <el-menu-item index="4">全部都是</el-menu-item>
+            <el-menu-item index="5">开开心心</el-menu-item>
           </el-menu>
         </div>
       </el-header>
@@ -39,9 +39,9 @@
                      :default-openeds="opens"
                      :router="true">
               <el-menu-item index="/activeHome">首页</el-menu-item>
+              <el-menu-item index="/activeStatistic">时光</el-menu-item>
               <el-menu-item index="/activePublic">活动发布</el-menu-item>
               <el-menu-item index="/activeManage">活动管理</el-menu-item>
-              <el-menu-item index="/activeStatistic">活动统计</el-menu-item>
               <el-submenu index="/selfManage">
                 <template slot="title">个人中心</template>
                 <el-menu-item index="/selfSpace">
