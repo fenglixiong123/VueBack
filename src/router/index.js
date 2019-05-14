@@ -9,6 +9,7 @@ import step1 from '../page/activePublic/step1'
 import step2 from '../page/activePublic/step2'
 import step3 from '../page/activePublic/step3'
 import step4 from '../page/activePublic/step4'
+import Statistic from "../components/Statistic";
 
 Vue.use(Router);
 
@@ -38,6 +39,11 @@ export default new Router({
         {path:'step3',component:step3},
         {path:'step4',component:step4},
       ]
+    },
+    {
+      path:'/activeStatistic',
+      name:'Statistic',
+      component:Statistic
     },
     {
       path:'/activeGuide',
