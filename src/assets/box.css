@@ -1,0 +1,82 @@
+
+.container{
+  margin-top: 150px;
+  perspective:1000px;
+}
+
+.box{
+  height: 200px;
+  width: 200px;
+  position: relative;
+  margin:auto;
+  transform-style:preserve-3d;/*定义3d转换*/
+  animation:rotate linear 5s infinite;/*animation：动画名字 时长 无限循环 线性速度（匀速）*/
+}
+/*动画效果，也可以以百分百的方式。默认逆时针的方向旋转。*/
+@keyframes rotate{
+  from{
+    transfrom: rotateY(0deg) rotateX(0deg);
+  }
+  to{
+    transform: rotateY(360deg) rotateX(360deg);
+  }
+}
+
+/*4.定义每一个面的宽高、行高等内容*/
+.box div{
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+  position: absolute;
+  text-align: center;
+  background: #333;
+  color:#fff;
+  line-height: 200px;
+  font-size: 30px;
+  border:1px solid #fff;
+}
+
+/*5.根据坐标系对每一个面进行定位、旋转得到立方体*/
+/* transform：向元素应用3D转换。
+translateX/translateY/translateZ：定义3D转换，此函数用来规定指定元素在三维空间中的位移。
+rotateX/rotateY/rotateZ：定义旋转。
+推荐：http://fangyexu.com/tool-CSS3Inspector.html。
+*/
+.plane-front{
+  transform:translateZ(100px);
+}
+.plane-back{
+  transform:translateZ(-100px);
+}
+.plane-left{
+  transform:rotateY(90deg) translateZ(-100px);
+}
+.plane-right{
+  transform:rotateY(90deg) translateZ(100px);
+}
+.plane-top{
+  transform:rotateX(90deg) translateZ(100px);
+}
+.plane-bottom{
+  transform:rotateX(90deg) translateZ(-100px);
+}
+
+/*鼠标经过的效果*/
+.box:hover .plane-front{
+  transform:translateZ(200px);
+}
+.box:hover .plane-back{
+  transform:translateZ(-200px);
+}
+.box:hover .plane-left{
+  transform:rotateY(90deg) translateZ(-200px);
+}
+.box:hover .plane-right{
+  transform:rotateY(90deg) translateZ(200px);
+}
+.box:hover .plane-top{
+  transform:rotateX(90deg) translateZ(200px);
+}
+.box:hover .plane-bottom{
+  transform:rotateX(90deg) translateZ(-200px);
+}

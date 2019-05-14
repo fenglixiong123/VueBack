@@ -142,4 +142,8 @@ export default {
     background-color: #545c64;
     /*border:1px solid blue;*/
   }
+  .back-color{
+    background:linear-gradient(#9ed128 0%,#358b98 80%);
+    opacity: 0.8;
+  }
 </style>
