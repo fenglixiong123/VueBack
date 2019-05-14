@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import '@/assets/box.css'
+  import '../assets/box.css'
     export default {
       name: "Setting",
       data(){

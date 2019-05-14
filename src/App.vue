@@ -29,7 +29,7 @@
       <el-container>
         <el-aside width="240px">
           <div class="flx-main-left">
-            <el-menu default-active="/activePublic"
+            <el-menu default-active="/activeHome"
                      class="el-menu-vertical-demo"
                      @open="handleOpen"
                      @close="handleClose"
@@ -109,7 +109,7 @@ export default {
     }
   },
   created() {
-    this.$router.push('/activePublic')
+    this.$router.push('/activeHome')
   }
 }
 </script>
