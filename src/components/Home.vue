@@ -1,59 +1,33 @@
 <template>
     <div>
-      <h1>You</h1>
-<!--      <img class="pink-heart" src="https://files.cnblogs.com/files/cjsblog/reward.bmp" />-->
-      <div id="div_digg">
-        小贴士：石亭
+      <div class="block">
+        <span class="demonstration">透明度</span>
+        <el-slider v-model="op" :min=0 :max=1 :step=0.1></el-slider>
       </div>
-      <!--动画小玩具-->
-      <Cube3D img1="../../assets/shi01.jpg"
-              img2="../../assets/shi02.jpg"
-              img3="../../assets/shi03.jpg"
-              img4="../../assets/shi04.jpg"
-              img5="@/assets/shi05.jpg"
-              img6="@/assets/shi06.jpg"
-              left="400px" top="200px" opacity="0.8" type="cubeS"
-      />
-      <Cube3D img1="../assets/shi01.jpg"
-              img2="../assets/shi02.jpg"
-              img3="../assets/shi03.jpg"
-              img4="../assets/shi04.jpg"
-              img5="../assets/shi05.jpg"
-              img6="../assets/shi06.jpg"
-              left="700px" top="200px" opacity="0.8" type="cubeY"
-      />
-      <Cube3D img1="../assets/shi01.jpg"
-              img2="../assets/shi02.jpg"
-              img3="../assets/shi03.jpg"
-              img4="../assets/shi04.jpg"
-              img5="../assets/shi05.jpg"
-              img6="../assets/shi06.jpg"
-              left="1000px" top="200px" opacity="0.8" type="cubeX"
-      />
-
+      <TingTing v-if="this.$store.state.switcher==='open'" :opacity="op"/>
+      <SmallBoss v-if="this.$store.state.switcher==='close'" :opacity="op"/>
     </div>
 </template>
 
 <script>
-    // import '../assets/cube.css'
     import Cube3D from "./toy/Cube3D";
+    import BigBoss from "./tea/BigBoss";
+    import SmallBoss from "./tea/SmallBoss";
+    import TingTing from "./tea/TingTing";
     export default {
         name: "Home",
-      components: {Cube3D}
+      data(){
+        return{
+          op : 0.8
+        }
+      },
+      methods:{
+
+      },
+      components: {TingTing, BigBoss, Cube3D,SmallBoss}
     }
 </script>
 
 <style scoped>
-  /*点击页面爱心效果*/
-  #div_digg {
-    position:fixed;
-    bottom:5px;
-    width:160px;
-    right:50px;
-    border:2px solid #6FA833;
-    padding:10px;
-    background-color:#fff;
-    border-radius:5px 5px 5px 5px !important;
-    box-shadow:0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
-  }
+
 </style>

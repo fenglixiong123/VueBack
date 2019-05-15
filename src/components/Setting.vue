@@ -1,6 +1,34 @@
 <template>
     <div>
-<!--      <img :style="imgClass" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1557769522504&di=de506311bb770ac77663e9cf7d9b0427&imgtype=0&src=http%3A%2F%2Fjy.sccnn.com%2Fzb_users%2Fupload%2F2018%2F01%2Fremoteimage2_20180122205752_67433.png">-->
+
+      <h1>开关状态：{{this.$store.state.switcher}}</h1>
+      <el-row>
+        <el-col :span="2">
+          输入密码:
+        </el-col>
+        <el-col :span="6" >
+          <el-input label="密码" type="password" v-model="password" placeholder="请输入密码查看私密内容..."/>
+        </el-col>
+        <el-col :span="6">
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col>
+          <el-button type="primary" @click="checkPassword">验证</el-button>
+        </el-col>
+      </el-row>
+      <br/>
+      <!--私密开关-->
+      <div v-show="show">
+        <br/>
+        <hr/>
+        <el-switch
+          v-model="boxSwitcher"
+          active-color="#13ce66"
+          inactive-color="#ff4949" @change="changeSwitcher">
+        </el-switch>
+      </div>
+
       <div class="eyes">
         <div class="box boxType">
           <div class="side div1"></div>
@@ -21,13 +49,34 @@
       name: "Setting",
       data(){
         return{
-
+          password:'',
+          show:false,
+          boxSwitcher:window.localStorage.getItem('switcher')==='open',
         }
       },
       computed:{
-        imgClass:function () {
-          return this.$store.state.setting.imgClass;
-        }
+
+      },
+      methods:{
+        checkPassword:function () {
+          if(this.password==='welcome123'){
+            console.log("password success");
+            this.show = true;
+            this.$message.success('恭喜你，密码正确');
+          }else {
+            console.log("password err");
+            this.show = false;
+            this.$message.error('您输入的密码有误');
+          }
+        },
+        changeSwitcher:function (value) {
+          console.log(value);
+          if(value){
+            this.$store.dispatch('modifySwitcher',{switcher:'open'});
+          }else{
+            this.$store.dispatch('modifySwitcher',{switcher:'close'});
+          }
+        },
       }
     }
 </script>

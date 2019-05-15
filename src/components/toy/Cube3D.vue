@@ -1,11 +1,10 @@
 <template>
   <div>
-    111{{image01}}
     <!--正方体-->
     <div class="wrap" :style="{top:top,left:left}">
       <div :class="type" class="cube cube_pointer">
-        <div class="img_position out_front" :style="{opacity:opacity}"><img :src="image01" alt="img1" /></div>
-        <div class="img_position out_back" :style="{opacity:opacity}"><img :src="image02" alt="img2" /></div>
+        <div class="img_position out_front" :style="{opacity:opacity}"><img :src="img1" alt="img1" /></div>
+        <div class="img_position out_back" :style="{opacity:opacity}"><img :src="img2" alt="img2" /></div>
         <div class="img_position out_left" :style="{opacity:opacity}"><img :src="img3" alt="img3" /></div>
         <div class="img_position out_right" :style="{opacity:opacity}"><img :src="img4" alt="img4" /></div>
         <div class="img_position out_top" :style="{opacity:opacity}"><img :src="img5" alt="img5" /></div>
@@ -23,20 +22,13 @@
           pic:{
             width:'520px',
             height:'520px',
-          },
-          image01:require('"'+this.img1+'"'),
-
+          }
         }
       },
       computed:{
-        image02:function () {
-          return require(this.img2);
-        }
+
       },
       props:['img1','img2','img3','img4','img5','img6','left','top','opacity','type'],
-      mounted() {
-        console.log(this.img1)
-      }
     }
 </script>
 

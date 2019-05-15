@@ -18,6 +18,10 @@ export default new Router({
   linkActiveClass:'active',
   routes: [
     {
+      path:'/',
+      redirect:'/activeHome'
+    },
+    {
       path: '/learnElement',
       name: 'LearnElement',
       component: LearnElement

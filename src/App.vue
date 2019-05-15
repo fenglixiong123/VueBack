@@ -109,7 +109,7 @@ export default {
     }
   },
   created() {
-    this.$router.push('/activeHome')
+    // this.$router.push('/activeHome')
   }
 }
 </script>
