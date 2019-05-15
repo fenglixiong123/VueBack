@@ -65,6 +65,7 @@
             this.$message.success('恭喜你，密码正确');
           }else {
             console.log("password err");
+            this.password = '';
             this.show = false;
             this.$message.error('您输入的密码有误');
           }
