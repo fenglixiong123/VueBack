@@ -77,6 +77,7 @@
           }else{
             this.$store.dispatch('modifySwitcher',{switcher:'close'});
           }
+          this.show = false;
         },
       }
     }
