@@ -1,4 +1,4 @@
 
 export default {
-  switcher:window.localStorage.getItem('switcher')
+  switcher:window.localStorage.getItem('switcher')===null?'close':'open'
 }
