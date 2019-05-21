@@ -1,6 +1,6 @@
 <template>
   <div>
-  Static
+    <AThreeBig/>
 </div>
 </template>
 

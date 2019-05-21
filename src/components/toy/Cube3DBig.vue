@@ -54,32 +54,26 @@
   }
 
   .out_front {
-    background: blue;
     transform: translateZ(100px);
   }
 
   .out_back {
-    background: blue;
     transform: translateZ(-100px);
   }
 
   .out_left {
-    background: blue;
     transform: rotateX(90deg) translateZ(100px);
   }
 
   .out_right {
-    background: blue;
     transform: rotateX(270deg) translateZ(100px);
   }
 
   .out_top {
-    background: blue;
     transform: rotateY(-90deg) translateZ(100px);
   }
 
   .out_bottom {
-    background: blue;
     transform: rotateY(90deg) translateZ(100px);
   }
 
