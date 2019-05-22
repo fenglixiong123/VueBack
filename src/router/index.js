@@ -4,6 +4,9 @@ import Home from "../components/Home";
 import Guide from "../components/Guide";
 import Setting from "../components/Setting";
 import Statistic from "../components/Statistic";
+import Time from "../components/Time";
+import Login from "../view/login";
+import House from "../components/House";
 
 Vue.use(Router);
 
@@ -12,6 +15,18 @@ export default new Router({
   linkActiveClass:'active',
   routes: [
     {
+      path:'/login',
+      component: Login
+    },
+    {
+      path:'/home',
+      component:House
+    },
+    {
+      path:'/time',
+      component: Time
+    },
+    {
       path:'/',
       redirect:'/activeHome'
     },
@@ -19,10 +34,6 @@ export default new Router({
       path:'/activeHome',
       name:'Home',
       component:Home
-    },
-    {
-      path:'/login',
-      component:()=>import('../page/login')  //路由懒加载,提高效率
     },
     {
       path:'/activeStatistic',

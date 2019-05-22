@@ -7,6 +7,19 @@ Cube3D Cube3DBig 分别是独立出的组件可以显示照片盒子
 
 遇到的问题：
 
+##2019.5.22添加登录功能
+添加进度条插件  
+npm install --save nprogress  
+- 基本用法：  
+NProgress.start();  
+NProgress.done();  
+- 高级用法
+NProgress.set(0.0);       
+NProgress.set(0.4);  
+NProgress.set(1.0);  
+- 图片加载
+NProgress.inc();  
+NProgress.done(true);  
 ##tomcat部署
 
 目标访问路径为：http://47.100.96.101:8080/xiong/   

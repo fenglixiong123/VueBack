@@ -1,12 +1,13 @@
 <template>
   <div>
-    <h1>Login</h1>
+    Time
+    <hr/>
   </div>
 </template>
 
 <script>
     export default {
-        name: "login"
+        name: "Time"
     }
 </script>
 

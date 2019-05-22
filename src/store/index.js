@@ -5,8 +5,7 @@ import state from './state'
 import getters from './getters'
 import mutations from './mutations'
 import actions from './actions'
-import setting from './modules/setting'
-import activePublic from './modules/activityPublic'
+import vueModules from './modules'
 
 Vue.use(Vuex);
 
@@ -16,8 +15,5 @@ export default new Vuex.Store({
   getters,
   mutations,
   actions,
-  modules:{
-    setting,
-    activePublic
-  }
+  modules:vueModules
 });
