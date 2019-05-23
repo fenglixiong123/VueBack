@@ -1,5 +1,6 @@
-import {login,logout,getInfo} from '../../../api/user'
+import {apiLogin,apiLogout,apiUserInfo} from '../../../api/user'
 import { getToken, setToken, removeToken } from '../../../utils/auth'
+import {setUser,removeUser} from '../../../utils/info'
 
 const state = {
   token:getToken(),
@@ -13,18 +14,19 @@ const mutations = {
   },
   setName : (state, name) => {
     state.name = name
-  },
+  }
 };
 
 const actions = {
-  // user login
+
   login({ commit }, userInfo) {
-    const { username, password } = userInfo
+    console.log("----->login action");
+    const { username, password } = userInfo;
     return new Promise((resolve, reject) => {
-      login({ username: username.trim(), password: password }).then(res => {
-        const { data } = res;
-        commit('setToken', data.data);
-        setToken(data.data);
+      apiLogin({ username: username, password: password }).then(res => {
+        console.log("login res:",res);
+        commit('setToken', res.data);
+        setToken(res.data);
         resolve(res);
       }).catch(error => {
         reject(error)
@@ -32,41 +34,41 @@ const actions = {
     })
   },
   getInfo({ commit, state }) {
+    console.log("----->getInfo action");
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then(response => {
-        const { data } = response;
-
-        if (!data) {
-          reject('Verification failed, please Login again.')
+      apiUserInfo(state.token).then(res => {
+        if (res.code!==200) {
+          reject('User info is blank')
         }
-
-        const { name } = data;
-
-        commit('setName', name);
-
-        resolve(data)
+        commit('setName',res.data.username);
+        setUser(res.data);
+        resolve(res);
       }).catch(error => {
-        reject(error)
+        reject(error);
       })
     })
   },
-  // user logout
+
   logout({ commit, state }) {
+    console.log("----->logout action");
     return new Promise((resolve, reject) => {
-      logout(state.token).then(() => {
+      apiLogout(state.token).then(() => {
         commit('setToken', '');
         removeToken();
-        resolve()
+        removeUser();
+        resolve();
       }).catch(error => {
-        reject(error)
+        reject(error);
       })
     })
   },
-  // remove token
+
   resetToken({ commit }) {
+    console.log("----->resetToken action");
     return new Promise(resolve => {
       commit('setToken', '');
       removeToken();
+      removeUser();
       resolve()
     })
   },

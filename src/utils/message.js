@@ -1,12 +1,17 @@
 import {Message} from "element-ui";
 
-
-
-function alertErrorMsg(msg) {
+function alertMsg(msg) {
   Message({
     message: msg,
-    type: 'error',
-    duration: 3 * 1000
+    type: 'success'
+  })
+}
+
+function alertMsg(msg,time) {
+  Message({
+    message: msg,
+    type: 'success',
+    duration: time
   })
 }
 
@@ -14,11 +19,35 @@ function alertSuccessMsg(msg) {
   Message({
     message: msg,
     type: 'success',
-    duration: 3 * 1000
+    showClose: true,
+  })
+}
+
+function alertSuccessMsg(msg,time) {
+  Message({
+    message: msg,
+    type: 'success',
+    duration: time
+  })
+}
+
+function alertErrorMsg(msg) {
+  Message({
+    message: msg,
+    type: 'error'
+  })
+}
+
+function alertErrorMsg(msg,time) {
+  Message({
+    message: msg,
+    type: 'error',
+    duration: time
   })
 }
 
 export {
+  alertMsg,
   alertErrorMsg,
   alertSuccessMsg
 }

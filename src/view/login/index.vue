@@ -1,7 +1,8 @@
 <template>
   <div class="login-container">
     <el-form ref="loginForm" class="login-form" :model="loginForm" auto-complete="on" label-position="left">
-      <div class="title-container">
+
+      <div>
         <h3 class="title">Login Form</h3>
       </div>
 
@@ -20,8 +21,7 @@
         />
       </el-form-item>
 
-      
-        <el-form-item prop="password">
+      <el-form-item prop="password">
           <span class="svg-container">
             密码
           </span>
@@ -36,10 +36,8 @@
             @keyup.enter.native="handleLogin"
           />
         </el-form-item>
-      
 
       <el-button type="primary"  @click.native.prevent="handleLogin">Login</el-button>
-
 
     </el-form>
 
@@ -79,7 +77,7 @@
             .then((res) => {
               console.log(res);
               if(res.code===200){
-                alertSuccessMsg("恭喜您，登录成功！");
+                this.$message.success("恭喜你，登录成功！");
                 console.log("login success");
                 this.$router.push("/home")
               }else {
@@ -95,5 +93,9 @@
 </script>
 
 <style scoped>
-
+.login-container{
+  text-align: center;
+  margin: 0 auto;
+  width: 40%;
+}
 </style>

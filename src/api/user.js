@@ -1,30 +1,30 @@
-import request from '@/utils/request'
+import service from '@/utils/request'
 
-function login(data) {
-  return request({
+function apiLogin(data) {
+  return service({
     url: '/adminApi/console/admin/login',
     method: 'post',
     data
   })
 }
 
-function getInfo(token) {
-  return request({
-    url: '/admin/info',
+function apiUserInfo(token) {
+  return service({
+    url: '/adminApi/console/admin/userInfo',
     method: 'get',
     params: { token }
   })
 }
 
-function logout() {
-  return request({
-    url: '/admin/logout',
+function apiLogout() {
+  return service({
+    url: '/adminApi/console/admin/logout',
     method: 'post'
   })
 }
 
 export {
-  login,
-  logout,
-  getInfo
+  apiLogin,
+  apiLogout,
+  apiUserInfo
 }

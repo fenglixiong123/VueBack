@@ -6,7 +6,7 @@
 
 <script>
 
-    import AThreeBig from "./tea/AThreeBig";
+    import AThreeBig from "../../components/tea/AThreeBig";
     export default {
       name: "Statistic",
       components: {AThreeBig},

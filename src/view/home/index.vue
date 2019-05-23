@@ -29,7 +29,7 @@
       <el-container>
         <el-aside width="240px">
           <div class="flx-main-left">
-            <el-menu default-active="/activeHome"
+            <el-menu default-active="/home/house"
                      class="el-menu-vertical-demo"
                      @open="handleOpen"
                      @close="handleClose"
@@ -38,10 +38,10 @@
                      active-text-color="#ffd04b"
                      :default-openeds="opens"
                      :router="true">
-              <el-menu-item index="/activeHome">首页</el-menu-item>
-              <el-menu-item index="/time">时光</el-menu-item>
-              <el-menu-item index="/activePublic">活动发布</el-menu-item>
-              <el-menu-item index="/activeManage">活动管理</el-menu-item>
+              <el-menu-item index="/home/house">首页</el-menu-item>
+              <el-menu-item index="/home/time">时光</el-menu-item>
+              <el-menu-item index="/home/public">活动发布</el-menu-item>
+              <el-menu-item index="/home/manage">活动管理</el-menu-item>
               <el-submenu index="/selfManage">
                 <template slot="title">个人中心</template>
                 <el-menu-item index="/selfSpace">
@@ -67,14 +67,14 @@
                   <span>修改密码</span>
                 </el-menu-item>
               </el-submenu>
-              <el-menu-item index="/activeGuide">文档指南</el-menu-item>
-              <el-menu-item index="/systemSet">系统设置</el-menu-item>
+              <el-menu-item index="/home/guide">文档指南</el-menu-item>
+              <el-menu-item index="/home/setting">系统设置</el-menu-item>
             </el-menu>
           </div>
         </el-aside>
         <el-main>
           <div class="flx-main-right">
-            <router-view/>
+            <router-view></router-view>
           </div>
         </el-main>
       </el-container>
@@ -91,7 +91,7 @@
 
 <script>
   export default {
-    name: 'House',
+    name: 'index',
     data(){
       return{
         opens:['/selfManage']
