@@ -6,9 +6,13 @@ import Time from "../view/time";
 import Guide from "../view/guide";
 import Setting from "../view/setting";
 import Statistic from "../view/statistic";
+import Test from "../components/Test";
 
 const staticRoute = [
-
+  {
+    path:'/',
+    redirect: '/home'
+  },
   {
     path:'/login',
     component: Login
@@ -47,6 +51,10 @@ const staticRoute = [
   {
     path:'/static',
     component:Statistic
+  },
+  {
+    path:'/test',
+    component: Test
   },
   {
     path:'*',

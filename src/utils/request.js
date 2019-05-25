@@ -15,13 +15,14 @@ const service = axios.create({
 service.interceptors.request.use(
 
   config => {
+    console.log("【service request】 : ",config.url);
     if (store.getters.token) {
       config.headers['X-Token'] = getToken()
     }
     return config
   },
   error => {
-    console.log(error);
+    console.log("service reject",error);
     return Promise.reject(error)
   }
 
@@ -32,15 +33,20 @@ service.interceptors.response.use(
 
   response => {
     const res = response.data;
-
+    console.log("【service response】 : ",res);
     switch (res.code) {
       case 200:
         return res;
-      //未登录
+      //服务器内部错误
+      case 500:
+        alertErrorMsg(res.data);
+        break;
+      //尚未登录
       case 4001:
         alertErrorMsg(res.msg);
+        //将跳转的路由path作为参数，登录成功后跳转到该路由
         this.$route.replace({
-          path: 'login', // 将跳转的路由path作为参数，登录成功后跳转到该路由
+          path: 'login',
           query: { redirect: router.currentRoute.fullPath }
         });
         break;
@@ -57,17 +63,12 @@ service.interceptors.response.use(
         alertErrorMsg(res.msg);
         break;
     }
-
-    return Promise.reject(res.data || 'error')
+    return Promise.resolve(res)
   },
-  error => {
-    console.log('err' + error);
-    Message({
-      message: error.message,
-      type: 'error',
-      duration: 5 * 1000
-    });
-    return Promise.reject(error)
+  err => {
+    console.log(`【service response】错误代码：${err.response.status},未找到可用的后台服务！`);
+    alertErrorMsg(`错误代码：${err.response.status},未找到可用的后台服务！`);
+    return Promise.reject(err)
   }
 );
 

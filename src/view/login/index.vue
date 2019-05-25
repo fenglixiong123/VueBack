@@ -45,7 +45,7 @@
 </template>
 
 <script>
-  import {alertErrorMsg,alertSuccessMsg} from 'utils/message'
+
     export default {
       name: "index",
       data(){
@@ -66,11 +66,11 @@
       methods:{
         handleLogin:function () {
           if(!this.loginForm.username){
-            alertErrorMsg("请填写用户名");
+            this.$message.error("请填写用户名");
             return;
           }
           if(!this.loginForm.password){
-            alertErrorMsg("请填写密码");
+            this.$message.error("请填写密码");
             return;
           }
           this.$store.dispatch('user/login', this.loginForm)

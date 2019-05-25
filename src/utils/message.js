@@ -1,17 +1,12 @@
 import {Message} from "element-ui";
+import fa from "element-ui/src/locale/lang/fa";
+
 
 function alertMsg(msg) {
   Message({
     message: msg,
-    type: 'success'
-  })
-}
-
-function alertMsg(msg,time) {
-  Message({
-    message: msg,
     type: 'success',
-    duration: time
+    duration: 3000
   })
 }
 
@@ -19,30 +14,17 @@ function alertSuccessMsg(msg) {
   Message({
     message: msg,
     type: 'success',
-    showClose: true,
+    duration: 3000
   })
 }
 
-function alertSuccessMsg(msg,time) {
-  Message({
-    message: msg,
-    type: 'success',
-    duration: time
-  })
-}
 
 function alertErrorMsg(msg) {
   Message({
     message: msg,
-    type: 'error'
-  })
-}
-
-function alertErrorMsg(msg,time) {
-  Message({
-    message: msg,
     type: 'error',
-    duration: time
+    duration: 3000,
+    center: false
   })
 }
 

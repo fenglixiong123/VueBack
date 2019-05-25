@@ -1,4 +1,4 @@
-import {apiLogin,apiLogout,apiUserInfo} from '../../../api/user'
+import {apiLogin,apiLogout,apiUserInfo} from '../../../api/api_user'
 import { getToken, setToken, removeToken } from '../../../utils/auth'
 import {setUser,removeUser} from '../../../utils/info'
 
@@ -28,8 +28,6 @@ const actions = {
         commit('setToken', res.data);
         setToken(res.data);
         resolve(res);
-      }).catch(error => {
-        reject(error)
       })
     })
   },
@@ -43,8 +41,6 @@ const actions = {
         commit('setName',res.data.username);
         setUser(res.data);
         resolve(res);
-      }).catch(error => {
-        reject(error);
       })
     })
   },
@@ -57,8 +53,6 @@ const actions = {
         removeToken();
         removeUser();
         resolve();
-      }).catch(error => {
-        reject(error);
       })
     })
   },

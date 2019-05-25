@@ -7,6 +7,34 @@ Cube3D Cube3DBig 分别是独立出的组件可以显示照片盒子
 
 遇到的问题：
 
+###Promise用法
+```
+testPromise:function () {
+  this.runAsync()
+    .then(res=>{
+      console.log("testPromise res : ",res);
+    })
+    .catch(err=>{
+      console.log("testPromise err : ",err);
+    })
+},
+runAsync:function () {
+  return new Promise((resolve,reject)=>{
+    setTimeout(function () {
+      console.log("runAsync exec");
+      let f = false;
+      if(f)
+        resolve("完成");
+      else
+        reject("失败")
+    },2000)
+  })
+}
+```
+正常情况下new一个promise对象之后不要调用catch方法，
+不然会直接catch掉reject方法，用promise的初衷是为了把信息传递到下游的函数
+
+
 ##2019.5.22添加登录功能
 添加进度条插件  
 npm install --save nprogress  

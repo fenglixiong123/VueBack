@@ -8,7 +8,7 @@ import store from '../store'
 Vue.use(Router);
 
 const router = new Router({
-  mode:'hash',
+  mode:'history',
   linkActiveClass:'active',
   routes: staticRoute
 });
@@ -19,7 +19,7 @@ const router = new Router({
  */
 router.beforeEach((to,from,next)=>{
   let token = getToken();
-  console.log(`======>beforeForward:url:${to.fullPath},token:${token}`);
+  console.log(`======>Route will go to : ${to.fullPath},token:${token}`);
   NProgress.start();
   if(to.meta.auth){
     if(token && token!=='undefined'){
