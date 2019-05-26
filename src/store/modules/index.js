@@ -1,6 +1,6 @@
 
-import user from './user'
+import auth from './store_auth'
 
 export default {
-  user
+  auth
 }

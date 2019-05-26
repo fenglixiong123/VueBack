@@ -110,7 +110,7 @@
       },
       logOut:function () {
         console.log("logOut");
-        this.$store.dispatch('user/logout').then(rep=>{
+        this.$store.dispatch('auth/logout').then(rep=>{
           this.$message.success("登出成功！");
           console.log(rep);
           this.$router.push('/login');

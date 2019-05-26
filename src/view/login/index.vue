@@ -48,14 +48,14 @@
             this.$message.error("请填写密码");
             return;
           }
-          this.$store.dispatch('user/login', this.loginForm)
+          this.$store.dispatch('auth/login', this.loginForm)
             .then((res) => {
               console.log(res);
               this.$message.success("恭喜你，登录成功！");
               console.log("login success");
               this.$router.push("/home/house");
               console.log("获取用户信息...");
-              this.$store.dispatch('user/getInfo');
+              this.$store.dispatch('auth/getInfo');
             })
             .catch((err) => {
               console.log("登录请求出错：",err)

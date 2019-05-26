@@ -1,6 +1,6 @@
-import {apiLogin,apiLogout,apiUserInfo} from '../../../api/api_user'
-import { getToken, setToken, removeToken } from '../../../utils/auth'
-import {getUser,setUser,removeUser} from '../../../utils/info'
+import {apiLogin,apiLogout,apiUserInfo} from '../../api/api_user'
+import { getToken, setToken, removeToken } from '../../utils/auth'
+import {getUser,setUser,removeUser} from '../../utils/info'
 
 /**
  * 这样做原因：
