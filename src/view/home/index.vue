@@ -21,6 +21,7 @@
             </el-submenu>
             <el-menu-item index="4">全部都是</el-menu-item>
             <el-menu-item index="5">开开心心</el-menu-item>
+            <div style="float: left;margin-left: 300px;margin-top: 15px "><el-button type="danger" size="mini" @click="logOut">退出</el-button></div>
           </el-menu>
         </div>
       </el-header>
@@ -106,10 +107,15 @@
       },
       handleClose(key, keyPath) {
         console.log(key, keyPath);
+      },
+      logOut:function () {
+        console.log("logOut");
+        this.$store.dispatch('user/logout').then(rep=>{
+          this.$message.success("登出成功！");
+          console.log(rep);
+          this.$router.push('/login');
+        });
       }
-    },
-    created() {
-      // this.$router.push('/activeHome')
     }
   }
 </script>

@@ -1,41 +1,16 @@
 <template>
-  <div class="login-container">
-    <el-form ref="loginForm" class="login-form" :model="loginForm" auto-complete="on" label-position="left">
+  <div class="container">
+    <el-form label-position="right" label-width="80px" :model="loginForm">
 
-      <div>
-        <h3 class="title">Login Form</h3>
-      </div>
+      <h3>Login Form</h3>
 
-      <el-form-item prop="username">
-        <span class="svg-container">
-          用户名
-        </span>
-        <el-input
-          ref="username"
-          v-model="loginForm.username"
-          placeholder="Username"
-          name="username"
-          type="text"
-          tabindex="1"
-          auto-complete="on"
-        />
+      <el-form-item label="用户名">
+        <el-input ref="username" type="text" v-model="loginForm.username" placeholder="Username"/>
       </el-form-item>
 
-      <el-form-item prop="password">
-          <span class="svg-container">
-            密码
-          </span>
-          <el-input
-            ref="password"
-            v-model="loginForm.password"
-            type="password"
-            placeholder="Password"
-            name="password"
-            tabindex="2"
-            auto-complete="on"
-            @keyup.enter.native="handleLogin"
-          />
-        </el-form-item>
+      <el-form-item label="密码">
+        <el-input ref="password" type="password" v-model="loginForm.password" placeholder="Password" auto-complete="off" @keyup.enter.native="handleLogin"/>
+      </el-form-item>
 
       <el-button type="primary"  @click.native.prevent="handleLogin">Login</el-button>
 
@@ -76,13 +51,11 @@
           this.$store.dispatch('user/login', this.loginForm)
             .then((res) => {
               console.log(res);
-              if(res.code===200){
-                this.$message.success("恭喜你，登录成功！");
-                console.log("login success");
-                this.$router.push("/home")
-              }else {
-                console.log("login error");
-              }
+              this.$message.success("恭喜你，登录成功！");
+              console.log("login success");
+              this.$router.push("/home/house");
+              console.log("获取用户信息...");
+              this.$store.dispatch('user/getInfo');
             })
             .catch((err) => {
               console.log("登录请求出错：",err)
@@ -93,9 +66,11 @@
 </script>
 
 <style scoped>
-.login-container{
+.container{
+  padding: 20px;
+  border: solid 1px #374180;
   text-align: center;
   margin: 0 auto;
-  width: 40%;
+  width: 30%;
 }
 </style>

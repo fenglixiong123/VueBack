@@ -1,10 +1,17 @@
 import {apiLogin,apiLogout,apiUserInfo} from '../../../api/api_user'
 import { getToken, setToken, removeToken } from '../../../utils/auth'
-import {setUser,removeUser} from '../../../utils/info'
+import {getUser,setUser,removeUser} from '../../../utils/info'
 
+/**
+ * 这样做原因：
+ * 由于state当浏览器刷新时候会清空state
+ * 所以利用localStorage来保存数据不被清空，
+ * 刷新的话从localStorage中重新取数据
+ * @type {{userInfo: any, token}}
+ */
 const state = {
   token:getToken(),
-  name:''
+  userInfo:getUser(),
 };
 
 
@@ -12,8 +19,8 @@ const mutations = {
   setToken : (state, token) => {
     state.token = token
   },
-  setName : (state, name) => {
-    state.name = name
+  setUserInfo : (state, userInfo) => {
+    state.userInfo = userInfo
   }
 };
 
@@ -37,12 +44,11 @@ const actions = {
     console.log("----->getInfo action");
     return new Promise((resolve, reject) => {
       apiUserInfo(state.token).then(res => {
-        if (res.code!==200) {
-          reject('User info is blank')
-        }
-        commit('setName',res.data.username);
+        commit('setUserInfo',res.data);
         setUser(res.data);
         resolve(res);
+      },err=>{
+        reject(err);
       })
     })
   },

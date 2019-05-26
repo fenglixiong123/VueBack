@@ -1,10 +1,23 @@
 <template>
   <div>
-    Home
+    用户基本信息：
+    <br/>
     <hr/>
-    {{token}}
-    <button @click="getUserInfo">获取用户信息</button>
-    <button @click="logOut">退出</button>
+
+    <el-row>
+      <el-col :span="8">
+        <el-card shadow="always" :body-style="cardStyle">
+          <p>用户ID：{{userInfo.id}}</p>
+          <p>用户名：{{userInfo.username}}</p>
+          <p>昵称：{{userInfo.nickname}}</p>
+          <p>性别：{{userInfo.sex===0?'女':'男'}}</p>
+          <p>Email：{{userInfo.email}}</p>
+          <p>Phone：{{userInfo.phone}}</p>
+          <p>地址：{{userInfo.address}}</p>
+
+        </el-card>
+      </el-col>
+    </el-row>
 
   </div>
 </template>
@@ -16,22 +29,21 @@
       components: {},
       data(){
         return{
-          token:''
+          token:'',
+          cardStyle:{
+            padding:'20px',
+            color:'yellow',
+            backgroundColor:'grey'
+          }
+        }
+      },
+      computed:{
+        userInfo:function () {
+          return this.$store.getters.userInfo;
         }
       },
       methods:{
-        logOut:function () {
-          console.log("logOut");
-          this.$store.dispatch('user/logout').then(rep=>{
-            this.$message.success("登出成功！");
-            console.log(rep);
-            this.$router.push('/login');
-          });
-        },
-        getUserInfo:function () {
-          console.log("getUserInfo");
-          this.$store.dispatch('user/getInfo');
-        }
+
       },
     }
 </script>

@@ -11,7 +11,7 @@ import Test from "../components/Test";
 const staticRoute = [
   {
     path:'/',
-    redirect: '/home'
+    redirect: '/home/house'
   },
   {
     path:'/login',
