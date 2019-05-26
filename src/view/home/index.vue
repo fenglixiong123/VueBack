@@ -41,8 +41,7 @@
                      :router="true">
               <el-menu-item index="/home/house">首页</el-menu-item>
               <el-menu-item index="/home/time">时光</el-menu-item>
-              <el-menu-item index="/home/public">活动发布</el-menu-item>
-              <el-menu-item index="/home/manage">活动管理</el-menu-item>
+              <el-menu-item index="/home/admin">用户</el-menu-item>
               <el-submenu index="/selfManage">
                 <template slot="title">个人中心</template>
                 <el-menu-item index="/selfSpace">

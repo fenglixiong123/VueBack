@@ -1,9 +1,10 @@
 import service from '@/utils/request'
+import method from './method_const'
 
 function apiLogin(data) {
   return service({
     url: '/adminApi/console/admin/login',
-    method: 'post',
+    method: method.POST,
     data
   })
 }
@@ -11,7 +12,7 @@ function apiLogin(data) {
 function apiUserInfo(token) {
   return service({
     url: '/adminApi/console/admin/userInfo',
-    method: 'get',
+    method: method.GET,
     params: { token }
   })
 }
@@ -19,7 +20,7 @@ function apiUserInfo(token) {
 function apiLogout() {
   return service({
     url: '/adminApi/console/admin/logout',
-    method: 'post'
+    method: method.POST
   })
 }
 

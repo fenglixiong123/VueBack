@@ -3,6 +3,7 @@ import Login from "../view/login";
 import Home from "../view/home";
 import House from "../view/house";
 import Time from "../view/time";
+import Admin from "../view/admin";
 import Guide from "../view/guide";
 import Setting from "../view/setting";
 import Statistic from "../view/statistic";
@@ -34,6 +35,13 @@ const staticRoute = [
       {
         path: 'time',
         component: Time,
+        meta: {
+          auth: true
+        }
+      },
+      {
+        path: 'admin',
+        component: Admin,
         meta: {
           auth: true
         }

@@ -1,10 +1,8 @@
 
 import axios from 'axios'
-import { Message} from 'element-ui'
 import store from '../store'
 import {getToken} from './auth'
-import {alertMsg,alertErrorMsg,alertSuccessMsg} from './message'
-
+import {alertErrorMsg} from './message'
 
 const service = axios.create({
   withCredentials: true,
