@@ -28,6 +28,8 @@ const actions = {
         commit('setToken', res.data);
         setToken(res.data);
         resolve(res);
+      },err=>{
+        reject(err);
       })
     })
   },

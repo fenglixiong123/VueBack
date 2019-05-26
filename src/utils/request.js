@@ -63,10 +63,10 @@ service.interceptors.response.use(
         alertErrorMsg(res.msg);
         break;
     }
-    return Promise.resolve(res)
+    return Promise.reject(res)
   },
   err => {
-    console.log(`【service response】错误代码：${err.response.status},未找到可用的后台服务！`);
+    console.log("【service response】请求发生了错误 : ",err);
     alertErrorMsg(`错误代码：${err.response.status},未找到可用的后台服务！`);
     return Promise.reject(err)
   }
