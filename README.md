@@ -5,8 +5,6 @@ a vue back project with element-ui for newer
 
 Cube3D Cube3DBig 分别是独立出的组件可以显示照片盒子
 
-遇到的问题：
-
 ###Promise用法
 ```
 testPromise:function () {
@@ -34,6 +32,10 @@ runAsync:function () {
 正常情况下new一个promise对象之后不要调用catch方法，
 不然会直接catch掉reject方法，用promise的初衷是为了把信息传递到下游的函数
 
+遇到的问题：
+
+###2019.5.27
+完成登录功能以及列表展示功能，暂时封版
 
 ##2019.5.22添加登录功能
 添加进度条插件  
@@ -48,6 +50,7 @@ NProgress.set(1.0);
 - 图片加载
 NProgress.inc();  
 NProgress.done(true);  
+
 
 ##登录流程梳理
 - 首次登录时，后端服务器判断用户账号密码正确之后，根据用户id、用户名、定义好的秘钥、过期时间生成 token ，返回给前端；
